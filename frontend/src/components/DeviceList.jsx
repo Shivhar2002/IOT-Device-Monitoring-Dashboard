@@ -29,30 +29,26 @@ function DeviceList() {
   return (
     <div className="device-container">
       <h2 className="title">📡 Device List</h2>
-
       <div className="device-grid">
         {devices.map(device => (
           <Link
-            to={`/device/${device._id}`}
+            to={`/device/${device.DeviceID}`}
             key={device.id}
             className="device-card"
           >
             <div className="device-header">
               <h3>{device.name}</h3>
               <span
-                className={`status ${device.status === 'Online' ? 'online' : 'offline'
-                  }`}
+                className={`status ${device.status === 'Online' ? 'online' : 'offline'}`}
               >
                 {device.status}
               </span>
             </div>
-
             <p className="device-id">ID: {device.DeviceID}</p>
           </Link>
         ))}
       </div>
     </div>
-
   )
 }
 

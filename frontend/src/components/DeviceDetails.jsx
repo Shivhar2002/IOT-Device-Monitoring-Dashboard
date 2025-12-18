@@ -28,38 +28,33 @@ function DeviceDetails() {
   if (error) return <div className="center error">Error: {error}</div>
   if (!device) return <div className="center">No device found.</div>
 
-  return (
-    <div className="details-container">
-      <Link to="/" className="back-link">⬅ Back to Device List</Link>
-
-      <div className="details-card">
-        <div className="details-header">
-          <h2>{device.name}</h2>
-          <span className={`status ${device.status === 'Online' ? 'online' : 'offline'}`}>
-            {device.status}
-          </span>
-        </div>
-
-        <p className="device-id">Device ID: {device.DeviceID}</p>
-
-        <div className="sensor-grid">
-          <div className="sensor-box">
-            <span>🌡 Temperature</span>
-            <strong>{device.temperature} °C</strong>
+    return (
+      <div className="details-container">
+        <Link to="/" className="back-link">⬅ Back to Device List</Link>
+        <div className="details-card">
+          <div className="details-header">
+            <h2>{device.name}</h2>
+            <span className={`status ${device.status === 'Online' ? 'online' : 'offline'}`}>
+              {device.status}
+            </span>
           </div>
-
-          <div className="sensor-box">
-            <span>💧 Humidity</span>
-            <strong>{device.humidity} %</strong>
+          <p className="device-id">Device ID: {device.DeviceID}</p>
+          <div className="sensor-grid">
+            <div className="sensor-box">
+              <span>🌡 Temperature</span>
+              <strong>{device.temperature} °C</strong>
+            </div>
+            <div className="sensor-box">
+              <span>💧 Humidity</span>
+              <strong>{device.humidity} %</strong>
+            </div>
           </div>
+          <p className="updated-time">
+            Last Updated: {new Date(device.lastUpdated).toLocaleString()}
+          </p>
         </div>
-
-        <p className="updated-time">
-          Last Updated: {new Date(device.lastUpdated).toLocaleString()}
-        </p>
       </div>
-    </div>
-  )
+    )
 }
 
 export default DeviceDetails
